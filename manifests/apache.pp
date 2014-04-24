@@ -9,6 +9,6 @@ class jboss_cluster::apache {
     port    => '443',
     ssl     => true,
     docroot => '/var/www/first',
-    custom_fragment => '#balancer',
+    custom_fragment => template("${module_name}/proxy.erb"),
   }
 }
