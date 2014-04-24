@@ -1,5 +1,5 @@
 class jboss_cluster::apache {
-  class { 'apache':
+  class { '::apache':
     default_vhost        => false,
   }
   apache::mod { 'proxy': }
@@ -8,7 +8,7 @@ class jboss_cluster::apache {
   apache::vhost { 'first.example.com':
     port    => '443',
     ssl     => true,
+    docroot => '/var/www/first',
     custom_fragment => '#balancer',
-    require => Augeas['add_proxy'],
   }
 }

@@ -11,5 +11,5 @@
 # Sample Usage:
 #
 class jboss_cluster {
-  include jboss_cluster::apache,
+  include jboss_cluster::apache
 }
