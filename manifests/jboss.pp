@@ -6,8 +6,20 @@ class jboss_cluster::jboss {
   jboss::instance{'jboss_instance2':
     cnx_bindip => $::ipaddress_eth1,
   }
-  service {['jboss_instance1','jboss_instance2']:
+  service {'jboss_instance1':
     ensure => running,
-    require => [Jboss::Instance['jboss_instance1'],Jboss::Instance['jboss_instance2']],
+    enable  => true,
+    hasrestart => true,
+    hasstatus => true,
+    status => '/etc/init.d/jboss_instance1 status  | grep "is running"',
+    require => Jboss::Instance['jboss_instance1'],
+  }
+   service {'jboss_instance2':
+    ensure => running,
+    enable  => true,
+    hasrestart => true,
+    hasstatus => true,
+    status => '/etc/init.d/jboss_instance2 status  | grep "is running"',
+    require => Jboss::Instance['jboss_instance2'],
   }
 }
