@@ -1,8 +1,8 @@
   ## Balancer
   <Proxy balancer://cluster>
-    BalancerMember ajp://localhost:8009 route=cnx_instance1
-    BalancerMember ajp://localhost:8008 route=cnx_instance2
+    BalancerMember ajp://<%= @ipaddress_eth0 %>:8080 route=cnx_instance1
+    BalancerMember ajp://<%= @ipaddress_eth1 %>:8080 route=cnx_instance2
   </Proxy>
 
-  ProxyPass /app balancer://cluster/app  stickysession=JSESSIONID|jsessionid scolonpathdelim=On
-  ProxyPassReverse /app http://first.example.com/app
+  ProxyPass / balancer://cluster/  stickysession=JSESSIONID|jsessionid scolonpathdelim=On
+  ProxyPassReverse / http://<%= @title %>/

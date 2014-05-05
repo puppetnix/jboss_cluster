@@ -5,10 +5,10 @@ class jboss_cluster::apache {
   apache::mod { 'proxy': }
   apache::mod { 'proxy_balancer': }
   apache::mod { 'proxy_ajp': }
-  apache::vhost { 'first.example.com':
+  apache::vhost { $jboss_cluster::nameserver:
     port    => '443',
     ssl     => true,
-    docroot => '/var/www/first',
+    docroot => '/var/www/html',
     custom_fragment => template("${module_name}/proxy.erb"),
   }
 }
