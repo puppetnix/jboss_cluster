@@ -10,6 +10,6 @@
 #
 # Sample Usage:
 #
-class jboss_cluster (nameserver=''){
+class jboss_cluster ($nameserver='first.example.com'){
   include jboss_cluster::apache
 }
