@@ -11,5 +11,5 @@
 # Sample Usage:
 #
 class jboss_cluster ($nameserver='first.example.com'){
-  include jboss_cluster::apache
+  include jboss_cluster::apache, jboss_cluster::jboss
 }
