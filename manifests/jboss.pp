@@ -1,5 +1,7 @@
 class jboss_cluster::jboss {
-  include ::jboss
+  class {'::jboss':
+    firewall => fasle,
+  }
   jboss::instance{'jboss_instance1':
     cnx_bindip => $::ipaddress_eth0,
   }

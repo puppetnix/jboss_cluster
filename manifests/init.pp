@@ -10,6 +10,10 @@
 #
 # Sample Usage:
 #
-class jboss_cluster ($nameserver='first.example.com'){
-  include jboss_cluster::apache, jboss_cluster::jboss
+class jboss_cluster (
+  $nameserver = 'first.example.com',
+  $firewall = true,
+  
+){
+  include jboss_cluster::apache, jboss_cluster::jboss, jboss_cluster::firewall
 }
